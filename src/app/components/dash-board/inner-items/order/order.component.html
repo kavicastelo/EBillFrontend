@@ -1,0 +1,116 @@
+<div class="container" style="margin-top: 30px">
+  <div class="alert alert-primary">
+    <form [formGroup]="customerForm">
+      <div class="row" style="margin: 0">
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <mat-form-field appearance="outline" class="full-with">
+            <mat-label>Customer</mat-label>
+            <mat-select formControlName="id" (ngModelChange)="setCustomerId()">
+              <mat-option *ngFor="let c_data of customerIdsList" [value]="c_data.id">
+                {{c_data.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <mat-form-field appearance="outline" class="full-with">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" type="text" matInput [disabled]="true">
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <mat-form-field appearance="outline" class="full-with">
+            <mat-label>Address</mat-label>
+            <input formControlName="address" type="text" matInput [disabled]="true">
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <mat-form-field appearance="outline" class="full-with">
+            <mat-label>Salary</mat-label>
+            <input formControlName="salary" type="text" matInput [disabled]="true">
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+  <hr>
+  <div class="alert alert-primary">
+    <form [formGroup]="productForm">
+      <div class="row" style="margin: 0">
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <mat-form-field appearance="outline" class="full-with">
+            <mat-label>Product</mat-label>
+            <mat-select formControlName="id" (ngModelChange)="setProductId()">
+              <mat-option *ngFor="let p_data of productIdsList" [value]="p_data.id">
+                {{p_data.description}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <mat-form-field appearance="outline" class="full-with">
+            <mat-label>Description</mat-label>
+            <input formControlName="description" type="text" matInput [disabled]="true">
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <mat-form-field appearance="outline" class="full-with">
+            <mat-label>Quantity On Hand</mat-label>
+            <input formControlName="quantity" type="number" matInput [disabled]="true">
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <mat-form-field appearance="outline" class="full-with">
+            <mat-label>Unit Price</mat-label>
+            <input formControlName="unitPrice" type="number" matInput [disabled]="true">
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <mat-form-field appearance="outline" class="full-with">
+            <mat-label>Quantity</mat-label>
+            <input formControlName="qty" type="number" matInput>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+  <hr>
+  <p style="text-align: right">
+    <button type="button" mat-raised-button color="accent" (click)="addToCart()">Add to cart</button>
+  </p>
+  <hr>
+  <div class="alert alert-warning" *ngIf="cart.length!==0">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Code</th>
+        <th>Description</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Option</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of cart; index as num">
+        <td>#-{{num+1}}</td>
+        <td>{{data.item._id}}</td>
+        <td>{{data.item.description}}</td>
+        <td>{{data.unitPrice}}</td>
+        <td>{{data.qty}}</td>
+        <td>{{data.total}}</td>
+        <td>
+          <button mat-raised-button color="warn" (click)="delete(data.item._id)">Delete <mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div class="alert alert-primary">
+    <p style="text-align: right">
+      <button mat-raised-button color="warn" (click)="saveOrder()">Place Order</button>
+    </p>
+  </div>
+</div>

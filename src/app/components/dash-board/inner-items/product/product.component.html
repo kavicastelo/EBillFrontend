@@ -1,0 +1,61 @@
+<form style="width: 100%" [formGroup]="productForm" (ngSubmit)="saveProduct()">
+  <div class="main-outer">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-3">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <input type="text" matInput formControlName="description">
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 col-md-3">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input type="number" matInput formControlName="quantity">
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 col-md-3">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Price per Unit</mat-label>
+            <input type="number" matInput formControlName="unitPrice">
+          </mat-form-field>
+        </div>
+
+        <div class="row col-12">
+          <p style="text-align: left">
+            <button [disabled]="productForm.invalid" mat-raised-button color="primary">{{selectedProduct?'Update Product':'Save Product'}}</button>
+            &nbsp;<button type="reset" mat-raised-button style="background-color: #7f8c8d">Reset</button>
+          </p>
+        </div>
+      </div>
+
+      <hr>
+
+      <table class="table table-hover col-12">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of productList">
+          <td>{{c._id}}</td>
+          <td>{{c.description}}</td>
+          <td>{{c.quantity}}</td>
+          <td>{{c.unitPrice}}</td>
+          <td><button type="submit" mat-raised-button color="warn" (click)="setUpdateData(c._id)">Update</button>&nbsp;
+            <button mat-raised-button color="accent" (click)="deleteProduct(c._id)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</form>

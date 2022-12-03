@@ -1,0 +1,56 @@
+<div class="outer">
+  <div class="top-btn-outer col-12">
+    <button mat-raised-button color="accent" (click)="clearData()">+ Add New Customer</button>
+  </div>
+
+  <form [formGroup]="customerForm" (ngSubmit)="saveCustomer()">
+    <div class="row">
+      <div class="col-12 col-lg-2 col-md-4 col-sm-12">
+        <mat-form-field class="input-wrapper" appearance="outline">
+          <input formControlName="name" matInput type="text" placeholder="Customer Name">
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-lg-3 col-md-4 col-sm-12">
+        <mat-form-field class="input-wrapper" appearance="outline">
+          <input formControlName="address" matInput type="text" placeholder="Customer Address">
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-lg-2 col-md-4 col-sm-12">
+        <mat-form-field class="input-wrapper" appearance="outline">
+          <input formControlName="salary" matInput type="text" placeholder="Customer Salary">
+        </mat-form-field>
+      </div>
+      <div class="row col-12">
+        <p style="text-align: left; margin: 0; padding: 0">
+          <button type="submit" [disabled]="customerForm.invalid" mat-raised-button color="primary">{{selectedCustomer?'Update Customer':'Save Customer'}}</button>
+          &nbsp;<button type="reset" mat-raised-button style="background-color: #7f8c8d">Reset</button>
+        </p>
+      </div>
+    </div>
+  </form>
+
+  <hr>
+
+  <table class="table table-hover col-12">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Salary</th>
+      <th>Option</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of customerList">
+      <td>{{c._id}}</td>
+      <td>{{c.name}}</td>
+      <td>{{c.address}}</td>
+      <td>{{c.salary}}</td>
+      <td><button type="submit" mat-raised-button color="warn" (click)="setUpdateData(c._id)">Update</button>&nbsp;
+        <button mat-raised-button color="accent" (click)="deleteCustomer(c._id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

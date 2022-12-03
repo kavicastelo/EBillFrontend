@@ -1,0 +1,21 @@
+<div class="outer">
+  <div class="header">
+    <h2>Dash Board</h2>
+    <button (click)="logout()" mat-raised-button color="accent">Logout</button>
+  </div>
+
+  <div class="row button-pad">
+    <button class="col-12 col-sm-5 col-md-2 col-lg-2"
+            mat-raised-button color="primary" routerLink="/dashboard/customer">Customer</button>
+    <button class="col-12 col-sm-5 col-md-2 col-lg-2"
+            mat-raised-button color="primary" routerLink="/dashboard/product">Products</button>
+    <button class="col-12 col-sm-5 col-md-2 col-lg-2"
+            mat-raised-button color="primary" routerLink="/dashboard/order">Orders</button>
+    <button class="col-12 col-sm-5 col-md-2 col-lg-2"
+            mat-raised-button color="primary" routerLink="/dashboard/orderdetails">Order Details</button>
+  </div>
+
+  <hr>
+
+  <router-outlet></router-outlet>
+</div>

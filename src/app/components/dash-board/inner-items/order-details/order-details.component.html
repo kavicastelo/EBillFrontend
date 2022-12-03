@@ -1,0 +1,80 @@
+<div class="main-outer">
+  <div class="container">
+
+    <div class="chart-btn">
+      <button mat-raised-button color="accent" routerLink="/dashboard/chart">Chart</button>
+    </div>
+
+    <form [formGroup]="ordersForm">
+
+      <div class=" row inner-outer" style="margin: 0">
+
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+          <p class="title">Order Details</p>
+          <div class="order">
+            <table class="table table-hover">
+              <tbody *ngFor="let data of orderIdsList; index as num">
+              <tr (click)="setOrderData(data.id)">
+                <td>{{num + 1}}</td>
+                <td>{{data.date.split('T', 1)}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+          <p class="title">Customer</p>
+          <div class="customer">
+            <div class="alert alert-primary" *ngIf="itemsList.length!==0">
+              <mat-form-field appearance="outline" class="full-with">
+                <mat-label>ID</mat-label>
+                <input formControlName="c_id" type="text" matInput [disabled]="true">
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-with">
+                <mat-label>Name</mat-label>
+                <input formControlName="c_name" type="text" matInput [disabled]="true">
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-with">
+                <mat-label>Address</mat-label>
+                <input formControlName="c_address" type="text" matInput [disabled]="true">
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-with">
+                <mat-label>Total</mat-label>
+                <input formControlName="total" type="text" matInput [disabled]="true">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+          <p class="title">Products</p>
+          <div class="product">
+            <div class="alert alert-warning" *ngIf="itemsList.length!==0">
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Price per unit</th>
+                  <th>Quantity</th>
+                  <th>total</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let data of itemsList">
+                <tr>
+                  <td>{{data.item.description}}</td>
+                  <td>{{data.item.unitPrice}}</td>
+                  <td>{{data.qty}}</td>
+                  <td>{{data.total}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+

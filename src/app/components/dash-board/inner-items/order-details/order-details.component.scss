@@ -1,0 +1,31 @@
+.main-outer{
+  width: 100%;
+  height: auto;
+}
+.chart-btn{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.inner-outer{
+  width: 100%;
+  height: auto;
+  justify-content: center;
+}
+.order{
+  overflow: auto;
+}
+.customer, .product{
+  overflow: auto;
+  height: 350px;
+}
+.full-with{
+  width: 100%;
+}
+.title{
+  font-weight: bold;
+  font-size: 20px;
+
+}
